@@ -38,9 +38,9 @@ def light_red():
     
     redformat = f'{countred:04}'
     redarray = list(redformat)
-    print(redarray)
+    #print(redarray)
     redarraynumbers = [int(x) for x in redarray]
-    print('Red Hits: ' + str(countred))
+    #print('Red Hits: ' + str(countred))
     while timer < 15:
         timer = timer + 1
         delta = (time.time() - start_time) * 8
@@ -64,10 +64,10 @@ def light_blue():
     
     blueformat = f'{countblue:04}'
     bluearray = list(blueformat)
-    print(bluearray)
+    #print(bluearray)
 
     bluearraynumbers = [int(x) for x in bluearray]
-    print('Blue Hits: ' + str(countblue))
+    #print('Blue Hits: ' + str(countblue))
 
     while timer < 15:
         timer = timer + 1
@@ -93,10 +93,10 @@ def light_green():
     
     greenformat = f'{countgreen:04}'
     greenarray = list(greenformat)
-    print(greenarray)
+    #print(greenarray)
 
     greenarraynumbers = [int(x) for x in greenarray]
-    print('Green Hits: ' + str(countgreen))
+    #print('Green Hits: ' + str(countgreen))
 
     while timer < 15:
         timer = timer + 1
@@ -122,10 +122,10 @@ def light_purple():
     
     purpleformat = f'{countpurple:04}'
     purplearray = list(purpleformat)
-    print(purplearray)
+    #print(purplearray)
 
     purplearraynumbers = [int(x) for x in purplearray]
-    print('Purple Hits: ' + str(countpurple))
+    #print('Purple Hits: ' + str(countpurple))
 
     while timer < 15:
         timer = timer + 1
@@ -150,7 +150,7 @@ def light_purple():
 class MyHandler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
-      self.send_response(418)
+      self.send_response(200)
       self.send_header('Content-type','text/refused')
       self.end_headers()
       # Send the html message
@@ -160,25 +160,31 @@ class MyHandler(SimpleHTTPRequestHandler):
         light_red()
         blinkt.set_pixel(0,255,0,0)
         blinkt.show()
+        print('Counts: R: ' + str(countred) +  ' G: ' + str(countgreen) + ' B: ' + str(countblue) + ' P: ' + str(countpurple))
       elif (self.path == '/blue'):
         blinkt.clear()
         blinkt.show()
         light_blue()
         blinkt.set_pixel(2,0,0,255)
         blinkt.show()
+        print('Counts: R: ' + str(countred) +  ' G: ' + str(countgreen) + ' B: ' + str(countblue) + ' P: ' + str(countpurple))
       elif (self.path == '/purple'):
         blinkt.clear()
         blinkt.show()
         light_purple()
         blinkt.set_pixel(4,255,0,255)
         blinkt.show()
+        print('Counts: R: ' + str(countred) +  ' G: ' + str(countgreen) + ' B: ' + str(countblue) + ' P: ' + str(countpurple))
       else:
         blinkt.clear()
         blinkt.show()
         light_green()
         blinkt.set_pixel(6,0,255,0)
         blinkt.show()
+        print('Counts: R:' + str(countred) +  ', G:' + str(countgreen) + ', B:' + str(countblue) + ', P:' + str(countpurple))
         return
+
+
 
 if __name__ == '__main__':
     httpd = HTTPServer(('', 8000), MyHandler)
