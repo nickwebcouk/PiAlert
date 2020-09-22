@@ -31,6 +31,10 @@ countpurple = 0
 start_time = time.time()
 
 def light_red():
+    
+    #timer ia used to work out how long the larson style effect lasts and
+    #countred keeps a count of the total calls to this function.
+    
     Display.Clear()
     timer = 0
     global countred
@@ -46,6 +50,7 @@ def light_red():
     #print('Red Hits: ' + str(countred))
     while timer < 15:
         timer = timer + 1
+        #This section is almost a carbon copy of the example provided by Pimoroni
         delta = (time.time() - start_time) * 8
         offset = int(round(((math.sin(delta) + 1) / 2) * (blinkt.NUM_PIXELS - 1)))
     
