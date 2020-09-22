@@ -36,6 +36,9 @@ def light_red():
     global countred
     countred = countred + 1
     
+    #The 4 digit display python function needs the digits formatted as a 4 item array
+    #So here we make it at least 4 digits and then split it into a 4 length array
+    
     redformat = f'{countred:04}'
     redarray = list(redformat)
     #print(redarray)
